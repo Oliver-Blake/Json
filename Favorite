@@ -1,0 +1,100 @@
+<html lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <title>JSON</title>
+    <script>
+        function GatherData() {
+            data[0] = document.myInfo.firstname.value;
+            data[1] = document.myInfo.lastname.value;
+            data[2] = document.myInfo.color.value;
+            data[3] = document.myInfo.major.value;
+            data[4] = document.myInfo.car.value;
+            data[5] = document.myInfo.state.value;
+            data[6] = document.myInfo.hobby.value;
+            data[7] = document.myInfo.sport.value;
+            JSONIFY();
+        }
+
+        function foo() {
+            var name = document.myInfo.firstname.value;
+            data.first = name;
+            turnJSON();
+        }
+ 
+        var data = {
+            first: "",
+            last: "",
+            color: "",
+            major: "",
+            car: "",
+            state: "",
+            sport: "",
+            hobby: "",
+        };
+
+        function display(obj) {
+            var main = document.getElementById("main");
+            var remove = document.getElementById("form");
+            main.removeChild(remove);
+
+            document.write("Here is your information from JSON<br>");
+            document.write(obj.name + "<br>");
+            document.write(obj.last + "<br>");
+            document.write(obj.color + "<br>");
+            document.write(obj.major + "<br>");
+            document.write(obj.car + "<br>");
+            document.write(obj.state + "<br>");
+            document.write(obj.sport + "<br>");
+            document.write(obj.hobby + "<br>");
+
+        }
+
+        function JSONIFY() {
+            var text = {
+                "name": data[0],
+                "last": data[1],
+                "color": data[2],
+                "major": data[3],
+                "car": data[4],
+                "state": data[5],
+                "sport": data[6],
+                "hobby": data[7],
+            };
+            var obj = JSON.stringify(text);
+            obj = JSON.parse(obj);
+            display(obj);
+        }
+    </script>
+</head>
+<body>
+    <div id="main">
+    <form name="myInfo" id="form">
+        First name:<br>
+        <input type="text" name="firstname">
+        <br>
+        Last name:<br>
+        <input type="text" name="lastname">
+        <br>
+        Favorite color:<br>
+        <input type="text" name="color">
+        <br>
+        Major:<br>
+        <input type="text" name="major">
+        <br>
+        Favorite car:<br>
+        <input type="text" name="car">
+        <br>
+        Your state:<br>
+        <input type="text" name="state">
+        <br>
+        Hobby:<br>
+        <input type="text" name="hobby">
+        <br>
+        Favorite sport:<br>
+        <input type="text" name="sport">
+        <br><br>
+        <input type="button" onclick="GatherData()" value="Enter!!">
+    </form>
+        </div>
+</body>
+</html>
